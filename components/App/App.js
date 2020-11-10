@@ -5,7 +5,9 @@ import "./App.css";
 
 function App() {
   const [birdName, setBird] = useState("");
-  const birds = useSelector((state) => state.birds);
+  const birds = [...useSelector((state) => state.birds)].sort((a, b) => {
+    return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+  });
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -50,3 +52,4 @@ function App() {
 }
 
 export default App;
+
